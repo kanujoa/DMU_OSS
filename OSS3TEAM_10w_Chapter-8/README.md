@@ -544,7 +544,31 @@ $
 <br/>
   
 # 📌 8.6 브랜치 병합 여부 확인
+다수의 브랜치가 있을 경우 어느 브랜치가 병합을 완료한 것인지 알기 어렵기 때문에 브랜치를 병합한 후에 바로 병합된 브랜치를 삭제하여 혼동을 줄일 수 있다.
 
+main 브랜치에서 병합한 브랜치와 병합하지 않은 브랜치를 구분하는 명령어를 사용해 보자.
+```bash
+뚜비@DESKTOP-SKBKL14 MINGW64 /c/OSS/git/10w chapter 08 (main)
+$ git branch --merged     # 브랜치 목록이 뜬다.
+  feature
+  footer
+* main     # 병합한 브랜치는 *로 표시된다.
+```
+<br/>
+
+병합을 완료한 브랜치는 앞에서 배운 -d 옵션을 사용하여 삭제가 가능하다. but 병합하지 않은 브랜치는 -d로 삭제되지 않으므로 -D 옵션을 사용한다.
+```bash
+git branch -d branch_name     # 병합된 브랜치 삭제에 사용
+git branch -D branch_name     # 병합되지 않은 브랜치 삭제에 사용
+```
+<br/>
+ 
+병합하지 않은 브랜치는 --no-merged 옵션으로 확인할 수 있다.
+```bash
+뚜비@DESKTOP-SKBKL14 MINGW64 /c/OSS/git/10w chapter 08 (main)
+$ git branch --no-merged     # 병합하지 않은 브랜치가 뜨지 않으므로 없다는 것을 확인 가능하다.
+```
+<br/>
 
 # 📌 8.7 리베이스
 ## 8.7.1 베이스
